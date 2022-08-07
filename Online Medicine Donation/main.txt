@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+    <head>
+                 <title>DonMed</title>
+                 <link rel="stylesheet" href="style.css">
+                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
+                 <link href="mainstyle.css" rel="stylesheet">
+  
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <link href="bootstrap-icons.css" rel="stylesheet">
+  <link href="boxicons.min.css" rel="stylesheet">
+  <link href="glightbox.min.css" rel="stylesheet">
+  <link href="swiper-bundle.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  
+ 
+                 <style>
+                   /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+  height: 100%;
+}
+
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background:-webkit-linear-gradient(left, #3931af, #00c6ff);
+}
+
+#description {
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+#infowindow-content .title {
+  font-weight: bold;
+}
+
+#infowindow-content {
+  display: none;
+}
+
+#map #infowindow-content {
+  display: inline;
+}
+
+.pac-card {
+  background-color: #fff;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+  margin: 10px;
+  padding: 0 0.5em;
+  font: 400 18px Roboto, Arial, sans-serif;
+  overflow: hidden;
+  font-family: Roboto;
+  padding: 0;
+}
+
+#pac-container {
+  padding-bottom: 12px;
+  margin-right: 12px;
+}
+
+.pac-controls {
+  display: inline-block;
+  padding: 5px 11px;
+}
+
+.pac-controls label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 400px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+#title {
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
+                     
+                    
+                     .emp-add{
+                         padding: 5%;
+                         margin-top: 40%;
+                         margin-bottom: 20%;
+                         border-radius: 0.7rem;
+                         background: white;
+                         margin-left:80%;
+                         margin-right: auto;
+                         
+                        
+                        
+                     }
+                     table{
+                         width: 40%;
+                         height: 40%;
+                         border-spacing: 15px;
+                         border-collapse: separate;
+                     }
+                     table td{
+                         font-size: large;
+                         width:25%;
+                         padding: 3px;
+                         
+                     }
+                     .text-danger
+                     {
+                         color: red;
+                     }
+                    td a{
+                         text-decoration: none;
+                         border-color: royalblue;
+                         border-radius: 0.4em;
+                        
+                     }
+                     td a:hover{
+                       text-decoration: none;
+                     }
+                 </style>
+                 
+    </head>
+    
+    <body>
+      
+        <header id="header">
+            <div class="container d-flex align-items-center">
+        
+              <div class="logo me-auto">
+                <h1><a href="index.html">Online Medicine and Equipment Donation</a></h1>
+              </div>
+        
+              <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                  <li><a class="nav-link scrollto active" href="index.html">HOME</a></li>
+                  <li><a class="nav-link scrollto" href="about.html">ABOUT</a></li>
+                  <li class="dropdown"><a href="#"><span>USER</span></a>
+                    <ul>
+                      <li><a href="userlogin.html">Donate</a></li>
+                    </ul>
+                  </li>
+                  <li><a class="nav-link scrollto" href="contact.html">CONTACT</a></li>
+                  <li><a class="nav-link scrollto" href="admin.html">ADMIN</a></li>
+                  <li><a class="nav-link scrollto" href="ngo.html">NGO</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+              </nav>
+            </div>
+          </header><!-- End Header -->
+          <div class="pac-card" id="pac-card">
+            <div>
+              <div id="title">Autocomplete search</div>
+              <div id="type-selector" class="pac-controls">
+                <input
+                  type="radio"
+                  name="type"
+                  id="changetype-all"
+                  checked="checked"
+                />
+                <label for="changetype-all">All</label>
+      
+                <input type="radio" name="type" id="changetype-establishment" />
+                <label for="changetype-establishment">establishment</label>
+      
+                <input type="radio" name="type" id="changetype-address" />
+                <label for="changetype-address">address</label>
+      
+                <input type="radio" name="type" id="changetype-geocode" />
+                <label for="changetype-geocode">geocode</label>
+      
+                <input type="radio" name="type" id="changetype-cities" />
+                <label for="changetype-cities">(cities)</label>
+      
+                <input type="radio" name="type" id="changetype-regions" />
+                <label for="changetype-regions">(regions)</label>
+              </div>
+              <br />
+              <div id="strict-bounds-selector" class="pac-controls">
+                <input type="checkbox" id="use-location-bias" value="" checked />
+                <label for="use-location-bias">Bias to map viewport</label>
+      
+                <input type="checkbox" id="use-strict-bounds" value="" />
+                <label for="use-strict-bounds">Strict bounds</label>
+              </div>
+            </div>
+            <div id="pac-container">
+              <input id="pac-input" type="text" placeholder="Enter a location" />
+            </div>
+          </div>
+          <div id="map"></div>
+          <div id="infowindow-content">
+            <span id="place-name" class="title"></span><br />
+            <span id="place-address"></span>
+          </div>
+      <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=places&v=weekly"
+    async>
+    function initMap() {
+  const map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 40.749933, lng: -73.98633 },
+    zoom: 13,
+    mapTypeControl: false,
+  });
+  const card = document.getElementById("pac-card");
+  const input = document.getElementById("pac-input");
+  const biasInputElement = document.getElementById("use-location-bias");
+  const strictBoundsInputElement = document.getElementById("use-strict-bounds");
+  const options = {
+    fields: ["formatted_address", "geometry", "name"],
+    strictBounds: false,
+    types: ["establishment"],
+  };
+
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
+
+  const autocomplete = new google.maps.places.Autocomplete(input, options);
+
+  // Bind the map's bounds (viewport) property to the autocomplete object,
+  // so that the autocomplete requests use the current map bounds for the
+  // bounds option in the request.
+  autocomplete.bindTo("bounds", map);
+
+  const infowindow = new google.maps.InfoWindow();
+  const infowindowContent = document.getElementById("infowindow-content");
+
+  infowindow.setContent(infowindowContent);
+
+  const marker = new google.maps.Marker({
+    map,
+    anchorPoint: new google.maps.Point(0, -29),
+  });
+
+  autocomplete.addListener("place_changed", () => {
+    infowindow.close();
+    marker.setVisible(false);
+
+    const place = autocomplete.getPlace();
+
+    if (!place.geometry || !place.geometry.location) {
+      // User entered the name of a Place that was not suggested and
+      // pressed the Enter key, or the Place Details request failed.
+      window.alert("No details available for input: '" + place.name + "'");
+      return;
+    }
+
+    // If the place has a geometry, then present it on a map.
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(17);
+    }
+
+    marker.setPosition(place.geometry.location);
+    marker.setVisible(true);
+    infowindowContent.children["place-name"].textContent = place.name;
+    infowindowContent.children["place-address"].textContent =
+      place.formatted_address;
+    infowindow.open(map, marker);
+  });
+
+  // Sets a listener on a radio button to change the filter type on Places
+  // Autocomplete.
+  function setupClickListener(id, types) {
+    const radioButton = document.getElementById(id);
+
+    radioButton.addEventListener("click", () => {
+      autocomplete.setTypes(types);
+      input.value = "";
+    });
+  }
+
+  setupClickListener("changetype-all", []);
+  setupClickListener("changetype-address", ["address"]);
+  setupClickListener("changetype-establishment", ["establishment"]);
+  setupClickListener("changetype-geocode", ["geocode"]);
+  setupClickListener("changetype-cities", ["(cities)"]);
+  setupClickListener("changetype-regions", ["(regions)"]);
+  biasInputElement.addEventListener("change", () => {
+    if (biasInputElement.checked) {
+      autocomplete.bindTo("bounds", map);
+    } else {
+      // User wants to turn off location bias, so three things need to happen:
+      // 1. Unbind from map
+      // 2. Reset the bounds to whole world
+      // 3. Uncheck the strict bounds checkbox UI (which also disables strict bounds)
+      autocomplete.unbind("bounds");
+      autocomplete.setBounds({ east: 180, west: -180, north: 90, south: -90 });
+      strictBoundsInputElement.checked = biasInputElement.checked;
+    }
+
+    input.value = "";
+  });
+  strictBoundsInputElement.addEventListener("change", () => {
+    autocomplete.setOptions({
+      strictBounds: strictBoundsInputElement.checked,
+    });
+    if (strictBoundsInputElement.checked) {
+      biasInputElement.checked = strictBoundsInputElement.checked;
+      autocomplete.bindTo("bounds", map);
+    }
+
+    input.value = "";
+  });
+}
+  
+  
+  </script>
+        
+        <table height=100% width=100%>
+        
+          
+
+            
+            <div class="center">
+                
+                    <td>
+                        <div class="container emp-add">
+
+                        
+                            <table>
+                               <tr><td><b></b></td><td><b></b></td><td><b></b></td><td style="background-color:#4169e121;border-radius: 0.4em;text-align: center;">
+                                  <a href="addmedicine.html">ADD MEDICINE<b>+</b></a></td>
+                                  <td><b></b></td><td><b></b></td><td><b></b></td><td><b></b></td>
+                              
+                                <td style="background-color: #4169e121;border-radius: 0.4em;text-align: center;">
+                                  <a href="addequipment.html">ADD EQUIPMENT<b>+</b></a></td>
+                                  </tr>
+                              
+                                  
+                               
+                                 
+                                  
+                                
+                              
+                                
+                               
+                            </table>
+                            
+                       </div>
+                            
+          
+        </table>
+        
+      
+        
+    </body>
+</html>
